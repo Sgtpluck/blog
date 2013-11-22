@@ -1,5 +1,8 @@
 body {
-  font-family: "Helbetica Neue", Arial, Helvetica, sans-serif;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  background-image:url('/../images/catparty.png');
+  font-size: 150%
+
 }
 
 article {
@@ -11,6 +14,7 @@ article {
 
 header h1 {
   margin: 0;
+  color: red;
 }
 
 header a {

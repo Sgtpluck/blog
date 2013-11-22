@@ -1,14 +1,16 @@
 require 'sinatra/base'
-require 'github_hook'
+# require 'github_hook'
 require 'ostruct'
 require 'time'
+require 'yaml'
+require 'redcarpet'
 
-class Blog < Sinatra::base
-  use GithubHook
+class Blog < Sinatra::Base
+  # use GithubHook
   
-  set :root, File.expand_path('../../', _FILE_)
-  set :article, []
-  set :app_file, _FILE_
+  set :root, File.expand_path('../../', __FILE__)
+  set :articles, []
+  set :app_file, __FILE__
 
   #loop through all the article files
   Dir.glob "#{root}/articles/*.md" do |file|
@@ -28,7 +30,7 @@ class Blog < Sinatra::base
     article.slug    = File.basename(file, '.md')
 
     #set up the route
-    get "/#{article_slug}" do
+    get "/#{article.slug}" do
       erb :post, :locals => {:article => article}
     end
     
